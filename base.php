@@ -13,7 +13,7 @@ include include_path('register_shutdown.php');
 
 if(defined('SUB_NAME')) {
 	env_load();
-	config_load(SUB_NAME);
+	config_load();
 }
 
 spl_autoload_register(function ($className) {

@@ -21,6 +21,10 @@ function config($key, $default = null) {
  */
 function config_load() {
 	global $_CONFIG;
+	if (!is_dir(local_config_path())) {
+		$_CONFIG = [];
+		return;
+	}
 	$files = glob(local_config_path('*'));
 	$config = [];
 	foreach ($files as $file) {

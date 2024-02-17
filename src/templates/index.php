@@ -5,7 +5,7 @@ if (environment('local'))
 else
 	define('VERSION', config('version/VERSION', '1') );
 
-if (uri_get(1) == 'ajax') {
+if (SUB_NAME === 'index' && uri_get(0) === 'ajax' || uri_get(1) === 'ajax') {
 	require_once template_path('ajax.php');
 	exit;
 }

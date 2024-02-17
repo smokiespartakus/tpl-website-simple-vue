@@ -27,6 +27,9 @@ function dd(...$values) {
 $_ENVIRONMENT = null;
 function env_load() {
 	global $_ENVIRONMENT;
+	if (!file_exists(local_base_path('env.php'))) {
+		throw new Exception('env.php not found');
+	}
 	$_ENVIRONMENT = include(local_base_path('env.php')) ?? [];
 }
 
