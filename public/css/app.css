@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+[v-cloak] {
+    display: none;
+}
+html, body {
+}
+
+.copy::after {
+    content: 'Copied!';
+    transition: all 1.5s ease;
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
+    inset: 0;
+    padding: 0.5rem 1rem;
+    background: #4caf5099;
+    color: #fff;
+    border-radius: 0.25rem;
+    display: grid;
+    place-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+.copied::after {
+    transition: all 0.5s ease;
+    opacity: 1;
+}
