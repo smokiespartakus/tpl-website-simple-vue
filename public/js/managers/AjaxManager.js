@@ -101,7 +101,7 @@ class AjaxManager {
 	getAxios() {
 		const headers = {};
 		return axios.create({
-			baseURL: `/${window.__LOCAL_FOLDER__}/ajax/`,
+			baseURL: `/ajax/`,
 			timeout: 30000,
 			headers: headers,
 		})

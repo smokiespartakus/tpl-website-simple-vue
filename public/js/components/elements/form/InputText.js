@@ -2,10 +2,12 @@ export default {
 	name: 'InputText',
 	template: `
 		<div class="form-group">
-			<label v-if="label" class="label">{{label}}</label>
+			<label v-if="label" class="label" :for="id">{{label}}</label>
 			<input 
 				v-model="value"
 				class="form-control" 
+				:name="name"
+				:id="id"
 				:type="type"
 				:disabled="disabled"
 				:readonly="readonly"
@@ -36,6 +38,12 @@ export default {
 		},
 		readonly: {
 			type: Boolean,
+		},
+		name: {
+			type: String,
+		},
+		id: {
+			type: String,
 		},
 	},
 	components: {},

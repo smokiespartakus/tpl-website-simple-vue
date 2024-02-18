@@ -18,6 +18,8 @@ function uri_get($num) {
 function get_input($key, $default = null) {
 	if (isset($_GET[$key])) return $_GET[$key];
 	if (isset($_POST[$key])) return $_POST[$key];
+	$input = json_decode(file_get_contents('php://input'), true);
+	if ($value = arr_get($input, $key)) return $value;
 	return $default;
 }
 

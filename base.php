@@ -9,6 +9,8 @@ include helper_path('system.php');
 include helper_path('uri.php');
 include helper_path('config.php');
 include helper_path('mix.php');
+include helper_path('strings.php');
+
 include include_path('register_shutdown.php');
 
 if(defined('SUB_NAME')) {
@@ -17,8 +19,8 @@ if(defined('SUB_NAME')) {
 }
 
 spl_autoload_register(function ($className) {
-	if (defined('SUB_NAME') && file_exists(local_base_path('classes', $className . '.php'))) {
-		include local_base_path('classes', $className . '.php');
+	if (defined('SUB_NAME') && file_exists(local_class_path($className . '.php'))) {
+		include local_class_path($className . '.php');
 		return;
 	}
 	include class_path($className . '.php');

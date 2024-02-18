@@ -2,12 +2,14 @@ export default {
 	name: 'InputFile',
 	template: `
 		<div class="form-group">
-			<label v-if="label" class="label">{{label}}</label>
+			<label v-if="label" class="label" :for="id">{{label}}</label>
 			<input 
 				ref="input"
 				@input="onChange"
 				class="block" 
 				type="file"
+				:name="name"
+				:id="id"
 				:disabled="disabled"
 				:readonly="readonly"
 				:multiple="multiple"
@@ -41,6 +43,12 @@ export default {
 		},
 		multiple: {
 			type: Boolean,
+		},
+		name: {
+			type: String,
+		},
+		id: {
+			type: String,
 		},
 	},
 	emits: ['files'],

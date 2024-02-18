@@ -1,7 +1,7 @@
 <?php
 
 function base_path(...$path) {
-	return path_combine(__DIR__, '..', '..', ...$path);
+	return path_combine_real(__DIR__, '..', '..', ...$path);
 }
 
 function src_path(...$path) {
@@ -108,4 +108,8 @@ function path_combine(...$paths) {
 		if ($v) $path[] = $v;
 	}
 	return implode(DIRECTORY_SEPARATOR, $path);
+}
+
+function path_combine_real(...$paths) {
+	return realpath(path_combine(...$paths));
 }
