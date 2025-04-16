@@ -1,3 +1,9 @@
+<?php
+if (!is_file(realpath(public_path('_sub', SUB_NAME, 'js', 'components', 'App.js')))) {
+	echo 'App.js not found. Please run the symlink command: php symlink.php ' . SUB_NAME;
+	exit(1);
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,8 +21,8 @@
 	<link rel="stylesheet" href="<?php mix('/css/app.css')?>?v=<?php echo VERSION?>" />
 	<style type="text/tailwindcss">
 		<?php
-		if (is_file(local_base_path('css', 'tailwind.css')))
-			include local_base_path('css', 'tailwind.css');
+		if (is_file(local_public_path('css', 'tailwind.css')))
+			include local_public_path('css', 'tailwind.css');
 		?>
 	</style>
 	<?php if (environment('local')): ?>
@@ -38,12 +44,18 @@
 		function mixImport(p) {
 			return Vue.defineAsyncComponent(() => import(mix(p)));
 		}
+		function mixGlobal(p) {
+			return `/_js/components/${p}?v=${window.__VERSION_GLOBAL__}`;
+		}
+		function mixImportGlobal(p) {
+			return Vue.defineAsyncComponent(() => import(mixGlobal(p)));
+		}
 	</script>
 </head>
 <body>
 <div id="app" class="" v-cloak></div>
 <script type="module">
-	import App from './js/components/App.js<?php echo '?v=' . VERSION ?>';
+	import App from '<?php mixv('/js/components/App.js') ?>';
 	const app = Vue.createApp(App);
 	app.mount('#app');
 </script>

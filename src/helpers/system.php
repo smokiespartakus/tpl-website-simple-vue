@@ -88,3 +88,12 @@ function pretty_dump($val, $return = false) {
 function logger() {
 	return Logger::instance();
 }
+
+function has_sub() {
+	return defined('SUB_NAME');
+}
+
+function is_sub_index() {
+	return has_sub() && SUB_NAME === 'index';
+}
+

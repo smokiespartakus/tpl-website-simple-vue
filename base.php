@@ -3,23 +3,24 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL ^ E_NOTICE);
 
-include __DIR__ . '/src/helpers/paths.php';
-include helper_path('array.php');
-include helper_path('system.php');
-include helper_path('uri.php');
-include helper_path('config.php');
-include helper_path('mix.php');
-include helper_path('strings.php');
+require_once __DIR__ . '/src/helpers/paths.php';
+require_once helper_path('uri.php');
+require_once helper_path('responses.php');
+require_once helper_path('mix.php');
+require_once helper_path('array.php');
+require_once helper_path('system.php');
+require_once helper_path('config.php');
+require_once helper_path('strings.php');
 
 include include_path('register_shutdown.php');
 
-if(defined('SUB_NAME')) {
+if(has_sub()) {
 	env_load();
 	config_load();
 }
 
 spl_autoload_register(function ($className) {
-	if (defined('SUB_NAME') && file_exists(local_class_path($className . '.php'))) {
+	if (has_sub() && file_exists(local_class_path($className . '.php'))) {
 		include local_class_path($className . '.php');
 		return;
 	}

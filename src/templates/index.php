@@ -3,9 +3,9 @@
 if (environment('local'))
 	define('VERSION', config('version.VERSION', '1') . '-' . time());
 else
-	define('VERSION', config('version/VERSION', '1') );
+	define('VERSION', config('version.VERSION', '1') );
 
-if (SUB_NAME === 'index' && uri_get(0) === 'ajax' || uri_get(1) === 'ajax') {
+if (is_sub_index() && uri_get(0) === 'ajax' || uri_get(1) === 'ajax') {
 	require_once template_path('ajax.php');
 	exit;
 }

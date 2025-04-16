@@ -1,6 +1,6 @@
 <?php
 
-if (SUB_NAME === 'index') $file = uri_get(1);
+if (is_sub_index()) $file = uri_get(1);
 else $file = uri_get(2);
 $path = local_ajax_path($file . '.ajax.php');
 if (!is_file($path)) $result = ['error' => 'No ajax file: ' . $file];

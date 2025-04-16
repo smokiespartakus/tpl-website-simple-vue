@@ -3,18 +3,32 @@
 Can contain separate subsites (folders with their own setup and public folders) and API's.
 
 ## Subsite _Template
-To create a new sub-site, the following folders/files:
+To create a new sub-site, copy the following folders/files:
 - `/sub/_template`
-- `/public/_template`
 
-Both need to have identical names. Update setup file `const` to reflect that name. 
-
-In `/public/{folder}/index.php` update the required setup file.
-
-Copy `env.template.php` to `env.php` and update the values.
-
-If only API is needed, then you don't need to copy contents of the public folder. Just require the new setup file in which ever php files you create.
+Copy `env.template.php` to `env.php` in new folder and update the values.
 
 `Config` files can be added to the `/config` folder in the new folder in `sub`.
 
-`index` sub is a special case. It is the root of `public`, but has an `index` folder in `sub`.
+### API
+If only API is needed, you can delete public folder in new sub and skip the symlink. 
+
+`setup.php` will is included automatically. Update that to handle api.
+
+## Vue Import
+Put local components/helpers/etc in `sub/my_sub/public/js/`.
+
+Use `mixImport` to import local components like this:
+```js
+components: {
+	HeadingLocal: mixImport('elements/HeadingLocal.js'),
+}
+```
+
+### Import global components
+Use `mixImportGlobal` to import global components from `public/_js` folder.
+```js
+components: {
+	Heading: mixImportGlobal('elements/Heading.js'),
+}
+```

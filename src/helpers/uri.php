@@ -6,8 +6,31 @@
  */
 function uri_get($num) {
 	if ($num === null) return null;
-	$uri = explode('/', preg_replace('/^\//', '', preg_replace('/(\?.*)$/', '', $_SERVER['REQUEST_URI'])));
+	$uri = uri_array();
 	return arr_get($uri, $num);
+}
+
+/**
+ * Get uri as an array
+ * @param int $offset array_slice offset
+ * @param null $length array_slice length
+ * @return array
+ */
+function uri_array($offset = 0, $length = null) {
+	$uri = explode('/', preg_replace('/^\//', '', preg_replace('/(\?.*)$/', '', $_SERVER['REQUEST_URI'])));
+	return array_slice($uri, $offset, $length);
+}
+
+/**
+ * Get uri as a string
+ * @param int $offset array_slice offset
+ * @param int|null $length array_slice length
+ * @return string|null
+ */
+function uri_sub($offset = 0, $length = null) {
+	$uri = uri_array($offset, $length);
+	if (count($uri) === 0) return null;
+	return implode('/', $uri);
 }
 
 /**
@@ -42,4 +65,8 @@ function uri_combine(...$paths) {
 		if ($v) $path[] = $v;
 	}
 	return implode($separator, $path);
+}
+
+function is_ajax() {
+	return is_sub_index() && uri_get(0) === 'ajax' || uri_get(1) === 'ajax';
 }

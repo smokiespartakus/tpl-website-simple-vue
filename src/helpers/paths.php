@@ -1,7 +1,7 @@
 <?php
 
 function base_path(...$path) {
-	return path_combine_real(__DIR__, '..', '..', ...$path);
+	return path_combine(__DIR__, '..', '..', ...$path);
 }
 
 function src_path(...$path) {
@@ -55,14 +55,18 @@ function template_path(...$path) {
  * LOCAL paths
  */
 function local_public_path(...$path) {
-	if (!defined('SUB_NAME')) {
-		throw new Exception('SUB_NAME is not defined');
-	}
-	if (SUB_NAME === 'index') return public_path(...$path);
-	return public_path(SUB_NAME, ...$path);
+	return local_base_path('public', ...$path);
 }
+
+//function local_public_path(...$path) {
+//	if (!has_sub()) {
+//		throw new Exception('SUB_NAME is not defined');
+//	}
+//	if (is_sub_index()) return public_path(...$path);
+//	return public_path(SUB_NAME, ...$path);
+//}
 function local_base_path(...$path) {
-	if (!defined('SUB_NAME')) {
+	if (!has_sub()) {
 		throw new Exception('SUB_NAME is not defined');
 	}
 	return sub_path(SUB_NAME, ...$path);

@@ -6,8 +6,7 @@
  * @return string|void
  */
 function mix($path, $return = false) {
-	if (SUB_NAME === 'index') $p = '/' . ltrim($path, '/');
-	else $p = uri_combine('/' . SUB_NAME, ltrim($path, '/'));
+	$p = uri_combine('/_sub/' . SUB_NAME, ltrim($path, '/'));
 	if ($return) return $p;
 	echo $p;
 }

@@ -46,7 +46,7 @@ class Logger {
 	}
 
 	private function logPath() {
-		if (defined('SUB_NAME')) {
+		if (has_sub()) {
 			return local_log_path($this->filename);
 		}
 		return log_path($this->filename);

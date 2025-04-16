@@ -1,4 +1,7 @@
 <?php
+/*
+ * Run migrations for a sub
+ */
 $sub = $argv[1] ?? null;
 
 if (!$sub) {
@@ -9,10 +12,10 @@ define('SUB_NAME', $sub);
 require_once __DIR__ . '/base.php';
 
 // Load env file of the specified sub to get the database connection
-env_load();
+//env_load();
 // Unsure if config is needed..
 // At some point I was hoping to be able to make a prefix for tables, but doesn't seem smart
-config_load();
+//config_load();
 
 $folder = local_base_path('migrations');
 
