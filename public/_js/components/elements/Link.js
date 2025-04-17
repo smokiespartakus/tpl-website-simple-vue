@@ -15,4 +15,4 @@ export default {
 	mounted() {
 	},
 	computed: {},
-}
+};

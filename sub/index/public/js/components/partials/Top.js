@@ -1,7 +1,10 @@
 export default {
-	name: 'Btn',
+	name: 'Top',
 	template: `
-		<button class="btn"><slot/></button>
+			<div class="flex flex-wrap gap-4">
+			Top
+			</div>
+
 		`,
 	setup() {
 		return {};
@@ -10,7 +13,9 @@ export default {
 		return {};
 	},
 	props: {},
-	components: {},
+	components: {
+		Link: mixImportGlobal('elements/Link.js'),
+	},
 	methods: {},
 	mounted() {
 	},

@@ -23,4 +23,4 @@ export default {
 	mounted() {
 	},
 	computed: {},
-}
+};

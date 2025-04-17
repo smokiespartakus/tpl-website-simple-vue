@@ -97,3 +97,22 @@ function is_sub_index() {
 	return has_sub() && SUB_NAME === 'index';
 }
 
+function sub_exists($sub) {
+	$subPath = base_path('sub', $sub);
+	return is_dir($subPath);
+}
+
+/**
+ * Check if the sub exists and is a valid directory. Throws exception if not.
+ * @param string|null $sub
+ * @return void
+ * @throws Exception
+ */
+function verify_sub($sub, $action = '<action>') {
+	if (!$sub) {
+		throw new Exception(sprintf('Sub name not provided. Usage: php %s <sub>', $action));
+	}
+	if (!sub_exists($sub)) {
+		throw new Exception('Sub does not exist: ' . $sub);
+	}
+}

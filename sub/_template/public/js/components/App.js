@@ -8,7 +8,7 @@ export default {
 		InputFile: mixImportGlobal('elements/form/InputFile.js'),
 		Btn: mixImportGlobal('elements/Btn.js'),
 		Link: mixImportGlobal('elements/Link.js'),
-		Top: mixImportGlobal('partials/Top.js'),
+		Top: mixImport('partials/Top.js'),
 	},
 	name: 'App',
 	template: `
@@ -39,4 +39,4 @@ export default {
 	mounted() {
 		this.load();
 	},
-}
+};

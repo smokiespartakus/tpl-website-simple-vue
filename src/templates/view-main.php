@@ -16,7 +16,8 @@ if (!is_file(realpath(public_path('_sub', SUB_NAME, 'js', 'components', 'App.js'
 
 	<link rel="shortcut icon" href="<?php mix('favicon.png') ?>" />
 	<!-- font awesome -->
-	<link rel="stylesheet" href="/_css/fontawesome.v5.6.3.all.css" />
+<!--	<link rel="stylesheet" href="/_css/fontawesome.v5.6.3.all.css" />-->
+	<link rel="stylesheet" href="/_css/fontawesome.free.v6.7.2.all.min.css" />
 
 	<link rel="stylesheet" href="<?php mix('/css/app.css')?>?v=<?php echo VERSION?>" />
 	<style type="text/tailwindcss">
@@ -39,7 +40,7 @@ if (!is_file(realpath(public_path('_sub', SUB_NAME, 'js', 'components', 'App.js'
 		window.__VERSION__ = '<?php echo VERSION ?>';
 		window.__LOCAL_FOLDER__ = '<?php echo SUB_NAME ?>';
 		function mix(p) {
-			return `/${window.__LOCAL_FOLDER__}/js/components/${p}?v=${window.__VERSION__}`;
+			return `/_sub/${window.__LOCAL_FOLDER__}/js/components/${p}?v=${window.__VERSION__}`;
 		}
 		function mixImport(p) {
 			return Vue.defineAsyncComponent(() => import(mix(p)));

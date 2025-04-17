@@ -2,7 +2,7 @@ export default {
 	name: 'InputFile',
 	template: `
 		<div class="form-group">
-			<label v-if="label" class="label" :for="id">{{label}}</label>
+			<label v-if="label" class="label" :for="id">{{ label }}</label>
 			<input 
 				ref="input"
 				@input="onChange"
@@ -27,9 +27,11 @@ export default {
 	props: {
 		modelValue: {
 			type: [String, Object, Array],
+			default: '',
 		},
 		label: {
 			type: String,
+			default: '',
 		},
 		type: {
 			type: String,
@@ -37,18 +39,23 @@ export default {
 		},
 		disabled: {
 			type: Boolean,
+			default: false,
 		},
 		readonly: {
 			type: Boolean,
+			default: false,
 		},
 		multiple: {
 			type: Boolean,
+			default: false,
 		},
 		name: {
 			type: String,
+			default: '',
 		},
 		id: {
 			type: String,
+			default: '',
 		},
 	},
 	emits: ['files'],
@@ -64,4 +71,4 @@ export default {
 	mounted() {
 		this.value = this.modelValue;
 	},
-}
+};

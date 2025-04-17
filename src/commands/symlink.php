@@ -4,12 +4,19 @@
  */
 $sub = $argv[1] ?? null;
 
-if (!$sub) {
-	throw new Exception('No sub specified (1st argument)');
+require_once __DIR__ . '/../helpers/paths.php';
+require_once helper_path('system.php');
+
+try {
+	verify_sub($sub, 'symlink');
+} catch(Exception $e) {
+	echo 'Error: ' . $e->getMessage() . PHP_EOL;
+	exit(1);
 }
+
 define('SUB_NAME', $sub);
 
-require_once __DIR__ . '/base.php';
+require_once __DIR__ . '/../base.php';
 $fromPath = realpath(local_public_path());
 if(!is_dir($fromPath)) {
 	echo 'Error: public folder does not exist' . PHP_EOL;

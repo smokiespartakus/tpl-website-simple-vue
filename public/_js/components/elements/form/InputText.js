@@ -2,7 +2,7 @@ export default {
 	name: 'InputText',
 	template: `
 		<div class="form-group">
-			<label v-if="label" class="label" :for="id">{{label}}</label>
+			<label v-if="label" class="label" :for="id">{{ label }}</label>
 			<input 
 				v-model="value"
 				class="form-control"
@@ -25,9 +25,11 @@ export default {
 	props: {
 		modelValue: {
 			type: [String, Number],
+			default: '',
 		},
 		label: {
 			type: String,
+			default: '',
 		},
 		type: {
 			type: String,
@@ -35,15 +37,19 @@ export default {
 		},
 		disabled: {
 			type: Boolean,
+			default: false,
 		},
 		readonly: {
 			type: Boolean,
+			default: false,
 		},
 		name: {
 			type: String,
+			default: '',
 		},
 		id: {
 			type: String,
+			default: '',
 		},
 	},
 	components: {},
@@ -58,4 +64,4 @@ export default {
 			this.$emit('update:modelValue', newVal);
 		},
 	},
-}
+};
