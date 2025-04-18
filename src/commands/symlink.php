@@ -1,6 +1,6 @@
 <?php
 /*
- * Create public symling for a sub
+ * Create public symlink for a sub
  */
 $sub = $argv[1] ?? null;
 
